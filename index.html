@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+</head>
+
+<body>
+    <script src="pixi/pixi.min.js"></script>
+
+    <script type="text/javascript">
+        let type = "WebGL"
+        if (!PIXI.utils.isWebGLSupported()) {
+            type = "canvas"
+        }
+
+        PIXI.utils.sayHello(type)
+
+        //Aliases
+        let Application = PIXI.Application,
+            loader = PIXI.loader,
+            resources = PIXI.loader.resources,
+            Sprite = PIXI.Sprite,
+            rectangle = PIXI.Rectangle,
+            TextureCache = PIXI.utils.TextureCache;
+
+        //Create pixi app
+        let app = new Application({
+            antialias: true, // default: false
+            transparent: false, // default: false
+            resolution: 1, // default: 1
+            width: window.innerWidth,
+            height: window.innerHeight
+        });
+        window.addEventListener("resize", function() {
+            app.renderer.resize(window.innerWidth, window.innerHeight);
+        });
+        //Add the canvas that Pixi automatically created for you to the HTML document
+        document.body.appendChild(app.view);
+
+    </script>
+</body>
+
+</html>
